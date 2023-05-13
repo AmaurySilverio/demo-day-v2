@@ -1,0 +1,31 @@
+body{
+  background-image: url(https://d35aaqx5ub95lt.cloudfront.net/images/4986531ca822d48e57b4a18f40ff5172.svg);
+  background-color: rgb(35,83,144);
+}
+.text-left{
+  margin-top: 11px;
+  margin-left: 43px;
+}
+.logo{
+  text-decoration: none;
+  color: white;
+}
+main{
+  margin-top: 180px;
+}
+h1{
+  color: white;
+  margin: 0 0 50px;
+  font-size: 32px;
+  line-height: 40px;
+}
+.btn{
+  height: fit-content;
+  width: 30%;
+}
+.d-flex{
+  align-items: center;
+}
+.d-flex a:first-of-type{
+  background-color: rgb(88,204,2)
+}
