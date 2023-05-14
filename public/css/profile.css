@@ -1,0 +1,25 @@
+/* Header */
+/* Profile button */
+#profile-btn{
+  cursor: pointer;
+}
+/* Footer */
+.layout-container{
+  margin: 0 auto;
+  max-width: 1140px;
+  min-height: 70px;
+  text-align: center;
+}
+.footer-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-header h2{
+  margin-right: 48px;
+  color: white;
+}
+.footer-header a{
+  width: 125px;
+  background-color: rgb(88,204,2)
+}

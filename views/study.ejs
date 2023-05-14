@@ -1,0 +1,109 @@
+<%- include('partials/profileHeader') -%>
+  <h1>Study Page</h1>
+  <h2>Under Construction, Check again for updates.</h2>
+  <h4>Create and Add custom cards to your deck below.</h4>
+  <h4 class="deckTitle">Decks:</h4>
+
+
+  <div id="deckContainer">
+  </div>
+
+  <!-- Trigger/Open The Modal -->
+  <button id="myBtn"><i class="fa-solid fa-circle-plus"></i></button>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content" id="deckModalContent">
+      <span class="close">&times;</span>
+      <form action="/study/deck" method="POST">
+
+        <label for="title">Deck Name:</label>
+        <input name="title" class="deckInput" type="text" placeholder="Letters i'm struggling with" required>
+
+
+        <button class="deckButton" type="submit">Create</button>
+
+      </form>
+    </div>
+  </div>
+
+
+  <div id="myModalTwo" class="modal">
+    <div class="modal-content" id="cardModalContent">
+      <span class="close">&times;</span>
+      <section>
+        <form action="/study/card/<%= deckContainer.id %>" method="POST">
+
+          <label for="letters">Word:</label>
+          <select name="letters" placeholder="Z" required>
+            <option value="a">A</option>
+            <option value="a">B</option>
+            <option value="a">C</option>
+          </select>
+
+
+          <button class="cardButton" type="submit">Submit</button>
+
+        </form>
+      </section>
+
+      <ul>
+        <% for(var i=0; i<cards.length; i++) {%>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-2">
+                <span>Letter:</span>
+                <span>
+                  <%= cards[i].letter %>
+                </span>
+              </div>
+              <div class="col-md-8">
+                <img src="letters/<%= cards[i].letter %>.png">
+              </div>
+              <div class="col-md-2 text-right">
+                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+              </div>
+            </div>
+          </li>
+          <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <!-- <div class="dropdown">
+    <span class="nav-link liveLink dropdown-toggle" id="profile-btn" href="">Profile</span>
+    <div class="dropdown-menu">
+      <a href="" class="col-3 btn btn-primary dropdown-item">Account</a>
+      <a href="/logout" class="col-3 btn btn-primary dropdown-item">Logout</a>
+    </div>
+  </div> -->
+
+
+  <ul>
+    <% for(var i=0; i<deckContainer.length; i++) {%>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-1 dropdown downMenu">
+            <span class="pointer deckToggle nav-link liveLink dropdown-toggle" id="<%=i%>">
+              <%= deckContainer[i].title %>
+            </span>
+            <div>
+              <div class="dropdown-menu deckMenu deckMenuDisappear">
+                <a href="" class="col-3 btn btn-primary dropdown-item dropdownDisappear">Study</a>
+                <span href="" class="col-3 btn btn-primary dropdown-item deck dropdownDisappear">Add Cards</span>
+                <a href="" class="col-3 btn btn-primary dropdown-item dropdownDisappear">Delete Cards</a>
+                <a href="" class="col-3 btn btn-primary dropdown-item dropdownDisappear">Delete Deck</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1 text-right">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+      </li>
+      <% } %>
+  </ul>
+
+
+  <%- include('partials/profileFooter') -%>

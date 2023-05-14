@@ -1,0 +1,44 @@
+<%- include('partials/learnHeader') -%>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 class="text-center mb-4">Please enter a single letter below, and we will show you an image demonstrating how
+          to sign it in American Sign Language.</h1>
+        <form action="/learn/createPost" method="POST">
+          <div class="form-group">
+            <input name="letters" class="form-control input" type="text" placeholder="P" required>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block button" type="submit">Submit</button>
+          </div>
+        </form>
+        <hr>
+        <h3 class="text-center">Letter(s) in American Sign Language:</h3>
+        <ul class="list-group">
+          <% for(var i=0; i<letterContainer.length; i++) {%>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-md-2">
+                  <span>Letter:</span>
+                  <span>
+                    <%= letterContainer[i].letters %>
+                  </span>
+                </div>
+                <div class="col-md-8">
+                  <img src="letters/<%= letterContainer[i].letters %>.png">
+                </div>
+                <div class="col-md-2 text-right">
+                  <form action="/learn/deletePost/<%= letterContainer[i].id %>?_method=DELETE" method="POST"
+                    class="col-3">
+                    <button class="fa fa-trash" type="submit"></button>
+                  </form>
+                </div>
+              </div>
+            </li>
+            <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <%- include('partials/learnFooter') -%>

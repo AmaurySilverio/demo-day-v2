@@ -1,0 +1,44 @@
+/* Header */
+/* Profile button */
+#profile-btn{
+  cursor: pointer;
+}
+/* Footer */
+.layout-container{
+  margin: 0 auto;
+  max-width: 1140px;
+  min-height: 70px;
+  text-align: center;
+}
+.footer-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-header h2{
+  margin-right: 48px;
+  color: white;
+}
+.footer-header a{
+  width: 125px;
+  background-color: rgb(88,204,2)
+}
+
+/* Live Translation */
+/* Text to ASL  */
+@font-face {
+  font-family: "Gallaude Regular";
+  src: url('/fonts/GallaudetRegular.ttf') format("truetype");
+}
+.fontTest{
+  font-family: "Gallaude Regular";
+  font-size: 6rem;
+}
+.player{
+  border: 1px solid black;
+    height: 300px;
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    border-radius: 8px;
+}
