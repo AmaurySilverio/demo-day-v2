@@ -17,9 +17,9 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  #cardAddition{
+  /* #cardAddition{
     display: none;
-  }
+  } */
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
@@ -49,4 +49,7 @@
   }
   .hide{
     display: none;
+  }
+  .seek{
+    display: block
   }

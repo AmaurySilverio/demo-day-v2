@@ -45,29 +45,35 @@
 
 
               <button class="cardButton" type="submit">Submit</button>
-
           </form>
       </section>
+    </div>
+  </div>
 
+  <div id="myModalThree" class="modal">
+    <div class="modal-content" id="studyDeckModalContent">
+      <span class="close">&times;</span>
       <ul>
-        <% for(var i=0; i<cards.length; i++) {%>
+        <% if(!cards.length){ %>
           <li class="list-group-item">
-            <div class="row">
-              <div class="col-md-2">
-                <span>Letter:</span>
-                <span>
-                  <%= cards[i].letter %>
-                </span>
-              </div>
-              <div class="col-md-8">
-                <img src="letters/<%= cards[i].letter %>.png">
-              </div>
-              <div class="col-md-2 text-right">
-                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
-              </div>
-            </div>
+            <h2>Add cards to your deck to begin studying.</h2>
           </li>
           <% } %>
+            <% for(var i=0; i<cards.length; i++) {%>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col-md-5 frontOfCard">
+                    <img src="lettersFlashCardFront/<%= cards[i].letter %>.png">
+                  </div>
+                  <div class="col-md-5 backOfCard hide">
+                    <img src="lettersFlashCardBack/<%= cards[i].letter %>.png">
+                  </div>
+                  <div class="col-md-2 text-right">
+                    <button class="flip">Answer</button>
+                  </div>
+                </div>
+              </li>
+              <% } %>
       </ul>
     </div>
   </div>
@@ -81,7 +87,7 @@
   </div> -->
 
 
-  <ul>
+  <ul class="dropDownParent">
     <% for(var i=0; i<deckContainer.length; i++) {%>
       <li class="list-group-item">
         <div class="row">
@@ -91,16 +97,16 @@
             </span>
             <div>
               <div class="dropdown-menu deckMenu deckMenuDisappear">
-                <a href="" class="col-3 btn btn-primary dropdown-item dropdownDisappear">Study</a>
-                <span href="" class="col-3 btn btn-primary dropdown-item deck dropdownDisappear">Add Cards</span>
-                <a href="" class="col-3 btn btn-primary dropdown-item dropdownDisappear">Delete Cards</a>
-                <a href="" class="col-3 btn btn-primary dropdown-item dropdownDisappear">Delete Deck</a>
+                <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear">Study</span>
+                <span class="col-3 btn btn-primary dropdown-item addCards dropdownDisappear">Add Cards</span>
+                <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span>
+                <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear">Delete Deck</span>
               </div>
             </div>
           </div>
-          <div class="col-md-1 text-right">
+          <!-- <div class="col-md-1 text-right">
             <i class="fa-solid fa-ellipsis-vertical"></i>
-          </div>
+          </div> -->
         </div>
       </li>
       <% } %>
