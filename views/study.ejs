@@ -33,19 +33,20 @@
     <div class="modal-content" id="cardModalContent">
       <span class="close">&times;</span>
       <section>
-        <form action="/study/card/<%= deckContainer.id %>" method="POST">
+        <% for(var i=0; i<deckContainer.length; i++) {%>
+          <form action="/study/card/<%= deckContainer[i].id %>" method="POST">
+            <%}%>
+              <label for="letter">Word:</label>
+              <select name="letter" placeholder="Z" required>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+              </select>
 
-          <label for="letters">Word:</label>
-          <select name="letters" placeholder="Z" required>
-            <option value="a">A</option>
-            <option value="a">B</option>
-            <option value="a">C</option>
-          </select>
 
+              <button class="cardButton" type="submit">Submit</button>
 
-          <button class="cardButton" type="submit">Submit</button>
-
-        </form>
+          </form>
       </section>
 
       <ul>

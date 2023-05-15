@@ -3,7 +3,7 @@ let deckInput = document.querySelector(".deckInput");
 let deckButton = document.querySelector(".deckButton");
 let deckModalContent = document.getElementById("deckModalContent");
 let deckModalContainer = document.getElementById("myModal");
-let x = document.getElementsByClassName("close")[0];
+let x = document.querySelectorAll(".close")[0];
 
 //card modal variables
 let cardButton = document.querySelector(".cardButton");
