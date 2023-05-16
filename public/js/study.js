@@ -29,28 +29,96 @@ if (answer) {
 }
 //flashcard flip/showAnswer function
 function showAnswer() {
-  frontOfCard.classList.toggle("hide");
-  backOfCard.classList.toggle("seek");
+  frontOfCard.classList.toggle("hideCard");
+  backOfCard.classList.toggle("seekCard");
 }
+//individual flashcard variable
+// let cards = document.querySelectorAll(".cards");
+// let cardsArray = Array.from(cards);
 
-//MAKE ^^^ DYNAMIC SO YOU CAN CHOOSE ANY DECK TITLE for the one below too!! querySelectorAll??
+// function shuffleCards(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+//   console.log("done", array);
+// let cardsArray = document.querySelector(".cards");
+//           for (let i = cardsArray.length - 1; i > 0; i--) {
+//             const j = Math.floor(Math.random() * (i + 1));
+//             [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]];
+// <% for (var i=0; i < cards.length; i++) { %>
+
+// <%let randomNumber=Math.floor(Math.random() * cards.length)%>
+//               <% console.log(randomNumber)%>
+// <% let cardsArray=[] %>
+//             <% let cardsCopy=cards %>
+//               <% for (var y=0; y < cards.length; y++) { %>
+//                 <% cardsArray.push(cardsCopy[y].letter) %>
+//                   <%} console.log("cardsCopy",cardsCopy)%>
+//                     <% for (let x=cardsArray.length - 1; x> 0; x--) { %>
+//                       <% const j=Math.floor(Math.random() * (x + 1)); %>
+//                         <% [cardsArray[x], cardsArray[j]]=[cardsArray[j], cardsArray[x]]; %>
+//                           <% for (var i=0; i < cards.length; i++) { console.log("ejs", cards.length)%>
+
+//                             <% } console.log(cards.length, cardsArray)%>
+//}
 
 // Deck dropdown menu functionality
-const dropdownToggleDeck = document.querySelector(".deckToggle");
-const dropdownMenuDeck = document.querySelector(".deckMenu");
+const dropdownToggleDeck = document.querySelectorAll(".deckToggle");
+const dropdownDeckMenu = document.querySelectorAll(".deckMenu");
+let dropdownDeckMenus = Array.from(dropdownDeckMenu); // deck menus
+let dropdownToggleDecks = Array.from(dropdownToggleDeck); //container
 
-dropdownToggleDeck.addEventListener("click", function () {
-  dropdownMenuDeck.classList.toggle("show");
+dropdownToggleDecks.forEach(function (deckTitle) {
+  deckTitle.addEventListener("click", function () {
+    let index = dropdownToggleDecks.indexOf(deckTitle);
+    dropdownDeckMenus[index].classList.toggle("show");
+  });
 });
 
 document.addEventListener("click", function (event) {
-  if (
-    !dropdownToggleDeck.contains(event.target) &&
-    !dropdownMenuDeck.contains(event.target)
-  ) {
-    dropdownMenuDeck.classList.remove("show");
+  // Check if the clicked element is a deckTitle or a child of a deckTitle
+  const isDeckTitle = dropdownToggleDecks.some((deckTitle) =>
+    deckTitle.contains(event.target)
+  );
+
+  if (!isDeckTitle) {
+    // Hide all dropdownDeckMenus
+    dropdownDeckMenus.forEach(function (deckMenu) {
+      deckMenu.classList.remove("show");
+    });
   }
 });
+
+// document.addEventListener("click", function (event) {
+//   if (
+//     !dropdownToggleDecks.contains(event.target) &&
+//     !dropdownDeckMenus.contains(event.target)
+//   ) {
+//     dropdownDeckMenus.classList.remove("show");
+//   }
+// });
+// let iteration = 0;
+// let arrDropdownMenuDeck = Array.from(dropdownMenuDeck); // deck menus
+// let dropdownToggleDecks = Array.from(dropdownToggleDeck); //container
+// console.log(arrDropdownMenuDeck);
+// console.log(arrDropdownMenuDeck[iteration]);
+
+// dropdownToggleDecks.forEach(function (deckTitle) {
+//   console.log(iteration);
+//   deckTitle.addEventListener("click", function () {
+//     if (deckTitle === dropdownToggleDecks[0]) {
+//       arrDropdownMenuDeck[0].classList.toggle("show");
+//     } else {
+//       iteration += dropdownToggleDecks.indexOf(deckTitle);
+//       console.log(iteration);
+//       arrDropdownMenuDeck[iteration].classList.toggle("show");
+//     }
+//   });
+// });
+// dropdownToggleDeck.addEventListener("click", function () {
+//   dropdownMenuDeck.classList.toggle("show");
+// });
 
 // Select the parent element that contains all the `.deckToggle` elements
 // const parent = document.querySelector(".dropDownParent");
@@ -131,6 +199,7 @@ xclose.addEventListener("click", function () {
 });
 //study deck modal event listeners
 studyDeck.addEventListener("click", function () {
+  // shuffleCards(cardsArray);
   studyDeckModalContainer.style.display = "block";
 });
 studyCloseModal.addEventListener("click", function () {

@@ -53,3 +53,38 @@
   .seek{
     display: block
   }
+  /* CSS for the hover effect on the img tag */
+  .modal-content .list-group-item:hover img {
+    opacity: 0.8;
+    /* Add any other desired hover styles */
+  }
+
+/* flashcard style */
+
+.cardFormat{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
+.frontOfCard{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.backOfCard{
+  width: 100%;
+  justify-content: center;
+}
+.cardFormatButtons{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+.hideCard{
+  display: none;
+}
+.seekCard{
+  display: flex;
+}
