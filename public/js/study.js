@@ -1,3 +1,4 @@
+var index = 0;
 // create deck modal variables
 let deckInput = document.querySelector(".deckInput");
 let deckButton = document.querySelector(".deckButton");
@@ -12,27 +13,147 @@ let xclose = document.getElementsByClassName("close")[1];
 //'create deck' button variable
 let btn = document.getElementById("myBtn");
 // deck title variable
-let addCards = document.querySelector(".addCards");
+let addCards = document.querySelectorAll(".addCards");
+let addCardsArray = Array.from(addCards);
+addCardsArray.forEach(function (addCardsButton) {
+  addCardsButton.addEventListener("click", addCardsFunctionality);
+});
 // study deck modal variables
-let studyDeck = document.querySelector(".study");
+let studyDeck = document.querySelectorAll(".study");
+let studyDeckArray = Array.from(studyDeck);
+studyDeckArray.forEach(function (deck) {
+  deck.addEventListener("click", retrieveCards);
+});
 let studyDeckModalContent = document.getElementById("studyDeckModalContent");
 let studyDeckModalContainer = document.getElementById("myModalThree");
 let studyCloseModal = document.getElementsByClassName("close")[2];
 
 //flashcard answer button variable
 let answer = document.querySelector(".flip");
-let frontOfCard = document.querySelector(".frontOfCard");
-let backOfCard = document.querySelector(".backOfCard");
+// let answerArray = Array.from(answer);
+let frontOfCard = document.querySelectorAll(".frontOfCard");
+let frontOfCardArray = Array.from(frontOfCard);
+let backOfCard = document.querySelectorAll(".backOfCard");
+let backOfCardArray = Array.from(backOfCard);
 //flashcard answer event listener
-if (answer) {
-  answer.addEventListener("click", showAnswer);
-}
+
+answer.addEventListener("click", showAnswer);
+
 //flashcard flip/showAnswer function
 function showAnswer() {
-  frontOfCard.classList.toggle("hideCard");
-  backOfCard.classList.toggle("seekCard");
+  // frontOfCardArray.forEach(function (frontCard) {
+  //   frontCard.classList.toggle("hideCard");
+  // });
+  // console.log(cardsArray[index].childNodes[0]);
+  cardsArray[index].childNodes[0].childNodes[1].classList.remove("hideCard");
+  // console.log(cardsArray[index]);
+
+  // answerArray[answerCounter].hidden = true;
+  // answerCounter++;
+  // console.log("answer counter:", answerCounter);
 }
+
+let cardContainer = document.querySelector(".cardContainer");
+function createCards(letter) {
+  let parentLi = document.createElement("li");
+  parentLi.className = "list-group-item cards";
+  let parentDiv = document.createElement("div");
+  parentDiv.className = "row cardFormat";
+  let div1 = document.createElement("div");
+  div1.className = "col-md-5 frontOfCard";
+  let frontCard = document.createElement("img");
+  frontCard.src = `lettersFlashCardFront/${letter}.png`;
+  let div2 = document.createElement("div");
+  div2.className = "col-md-5 backOfCard hideCard";
+  let backCard = document.createElement("img");
+  backCard.src = `lettersFlashCardBack/${letter}.png`;
+  let div3 = document.createElement("div");
+  div3.className = "col-md-2 text-right cardFormatButtons";
+  let answerBtn = document.createElement("button");
+  answerBtn.className = "flip btn btn-primary rounded-pill";
+  answerBtn.innerText = "Answer";
+  let nextCardBtn = document.createElement("button");
+  nextCardBtn.className = "nextCard btn btn-primary rounded-pill";
+  nextCardBtn.innerText = "Next Card";
+  div3.appendChild(nextCardBtn);
+  div3.appendChild(answerBtn);
+  div2.appendChild(backCard);
+  div1.appendChild(frontCard);
+  parentDiv.appendChild(div1);
+  parentDiv.appendChild(div2);
+  // parentDiv.appendChild(div3);
+  parentLi.appendChild(parentDiv);
+
+  // answer = document.querySelectorAll(".flip");
+  // answerArray = Array.from(answer);
+  // nextCardButton = document.querySelectorAll(".nextCard");
+  // nextCardButtonArray = Array.from(nextCardButton);
+  frontOfCard = document.querySelectorAll(".frontOfCard");
+  frontOfCardArray = Array.from(frontOfCard);
+  backOfCard = document.querySelectorAll(".backOfCard");
+  backOfCardArray = Array.from(backOfCard);
+
+  // answerArray.forEach(function (answerButton) {
+  //   answerButton.addEventListener("click", () => showAnswer());
+  // });
+
+  // answerArray[answerArray.length - 1].addEventListener("click", showAnswer);
+
+  // nextCardButtonArray.forEach(function (nextCardButton) {
+  //   nextCardButton.addEventListener("click", nextCard);
+  // });
+
+  return parentLi;
+}
+
 //individual flashcard variable
+let cards = document.querySelectorAll(".cards");
+let cardsArray = Array.from(cards);
+//flashcard next card button variable
+let nextCardButton = document.querySelector(".nextCard");
+// let nextCardButtonArray = Array.from(nextCardButton);
+let nextButtonClicked = 0;
+//end of deck li variable
+let endOfDeck = document.querySelector(".endOfDeck");
+//next card button eventlistener
+
+nextCardButton.addEventListener("click", nextCard);
+
+var counter = 0;
+function nextCard() {
+  // if (nextCounter === cardsArray.length) {
+  //   cardsArray[nextButtonClicked].classList.toggle("hideCard");
+  //   endOfDeck.hidden = false;
+  // }
+  cardsArray[index].childNodes[0].childNodes[1].classList.remove("seekCard");
+  // nextCounter++;
+
+  cardsArray[index].classList.toggle("hideCard");
+  index++;
+  // console.log("button click counter:", nextButtonClicked);
+  cardsArray[index].classList.remove("hideCard");
+  console.log(index);
+  // else {
+  //   cardsArray[nextButtonClicked].classList.toggle("hideCard");
+  //   endOfDeck.hidden = false;
+  // }
+
+  // if (nextButtonClicked === cardsArray.length) {
+  //   let container = document.createElement("h2");
+  //   container.innerText = "Congratulations! You have finished this deck.";
+  //   studyDeckModalContent.append(container);
+  // }
+}
+// console.log(cardsArray);
+// if(nextButtonClicked )
+
+// function endOfDeck() {
+//   let container = document.createElement("h2");
+//   container.innerText = "Congratulations! You have finished this deck.";
+//   studyDeckModalContent.append(container);
+// }
+
+// //individual flashcard variable
 // let cards = document.querySelectorAll(".cards");
 // let cardsArray = Array.from(cards);
 
@@ -153,36 +274,45 @@ dropdownItems.forEach(function (item) {
   });
 });
 
-//array of letters
-const letters = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
+function retrieveCards(e) {
+  let deckId = e.target.dataset.deckid;
+  fetch(`/study/card/${deckId}`)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      cardContainer.innerHTML = "";
+      jsonData.forEach((item) => {
+        cardContainer.appendChild(createCards(item.letter));
+      });
+      console.log(jsonData);
+      console.log(e.target.dataset);
+      cards = document.querySelectorAll(".cards");
+      cardsArray = Array.from(cards);
+      studyDeckModalContainer.style.display = "block";
+      cardsArray.forEach((card) => {
+        console.log(card);
+        card.classList.toggle("hideCard");
+      });
+      cardsArray[0].classList.toggle("hideCard");
+      // hideCards(cardsArray);
+    });
+  index = 0;
+}
 
+function addCardsFunctionality() {
+  cardModalContainer.style.display = "block";
+}
+
+function resetStudyModal() {
+  nextButtonClicked = 0;
+  cardsArray.forEach(function (card) {
+    card.classList.remove("hideCard");
+  });
+  endOfDeck.hidden = true;
+  answerCounter = 0;
+  nextCounter = 1;
+  answerArray[0].hidden = false;
+  backOfCardArray[0].classList.remove("seekCard");
+}
 // deck modal event listeners
 btn.addEventListener("click", function () {
   deckModalContainer.style.display = "block";
@@ -190,18 +320,13 @@ btn.addEventListener("click", function () {
 x.addEventListener("click", function () {
   deckModalContainer.style.display = "none";
 });
-//card modal event listeners
-addCards.addEventListener("click", function () {
-  cardModalContainer.style.display = "block";
-});
+
 xclose.addEventListener("click", function () {
   cardModalContainer.style.display = "none";
 });
-//study deck modal event listeners
-studyDeck.addEventListener("click", function () {
-  // shuffleCards(cardsArray);
-  studyDeckModalContainer.style.display = "block";
-});
+
 studyCloseModal.addEventListener("click", function () {
   studyDeckModalContainer.style.display = "none";
+  // resetStudyModal();
 });
+console.log(cards);

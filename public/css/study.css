@@ -64,16 +64,16 @@
 .cardFormat{
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-content: center;
 }
 .frontOfCard{
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   justify-content: center;
 }
 .backOfCard{
-  width: 100%;
+  /* width: 100%; */
   justify-content: center;
 }
 .cardFormatButtons{

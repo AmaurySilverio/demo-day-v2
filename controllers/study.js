@@ -22,6 +22,20 @@ module.exports = {
       console.log(err);
     }
   },
+  getCards: async (req, res) => {
+    try {
+      const cards = await Card.find({ parentDeck: req.params.id });
+      console.log("cardsjaja", cards[0].letter);
+
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+      res.json(cards);
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createDeck: async (req, res) => {
     try {
       // Upload image to cloudinary

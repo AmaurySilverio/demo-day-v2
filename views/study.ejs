@@ -41,6 +41,29 @@
                 <option value="a">A</option>
                 <option value="b">B</option>
                 <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+                <option value="f">F</option>
+                <option value="g">G</option>
+                <option value="h">H</option>
+                <option value="i">I</option>
+                <option value="j">J</option>
+                <option value="k">K</option>
+                <option value="l">L</option>
+                <option value="m">M</option>
+                <option value="n">N</option>
+                <option value="o">O</option>
+                <option value="p">P</option>
+                <option value="q">Q</option>
+                <option value="r">R</option>
+                <option value="s">S</option>
+                <option value="t">T</option>
+                <option value="u">U</option>
+                <option value="v">V</option>
+                <option value="w">W</option>
+                <option value="x">X</option>
+                <option value="y">Y</option>
+                <option value="z">Z</option>
               </select>
 
 
@@ -53,38 +76,34 @@
   <div id="myModalThree" class="modal">
     <div class="modal-content rounded" id="studyDeckModalContent">
       <span class="close">&times;</span>
-      <% let cardsArray=[] %>
-        <% let cardsCopy=cards %>
-          <% for (var y=0; y < cards.length; y++) { %>
-            <% cardsArray.push(cardsCopy[y].letter) %>
-              <%} console.log("cardsCopy",cardsCopy)%>
-                <% for (let x=cardsCopy.length - 1; x> 0; x--) { %>
-                  <% const j=Math.floor(Math.random() * (x + 1)); %>
-                    <% [cardsCopy[x], cardsCopy[j]]=[cardsCopy[j], cardsCopy[x]]; %>
-                      <% }console.log(cardsCopy)%>
-                        <ul class="list-group">
-                          <% if (!cards.length) { %>
-                            <li class="list-group-item" style="background-color: #FFDAB9;">
-                              <h2>Add cards to your deck to begin studying.</h2>
-                            </li>
-                            <% } %>
-                              <% for (var i=0; i < cards.length; i++) { %>
-                                <li class="list-group-item cards" style="background-color: #FFEFD5;">
-                                  <div class="row cardFormat">
-                                    <div class="col-md-5 frontOfCard">
-                                      <img src="lettersFlashCardFront/<%= cardsCopy[i].letter %>.png">
-                                    </div>
-                                    <div class="col-md-5 backOfCard hideCard">
-                                      <img src="lettersFlashCardBack/<%= cardsCopy[i].letter %>.png">
-                                    </div>
-                                    <div class="col-md-2 text-right cardFormatButtons">
-                                      <button class="flip btn btn-primary rounded-pill">Answer</button>
-                                      <button class="flip btn btn-primary rounded-pill">Next Card</button>
-                                    </div>
-                                  </div>
-                                </li>
-                                <% } %>
-                        </ul>
+      <ul class="list-group cardContainer">
+        <% if (!cards.length) { %>
+          <li class="list-group-item" style="background-color: #FFDAB9;">
+            <h2>Add cards to your deck to begin studying.</h2>
+          </li>
+          <% } %>
+            <% for (var i=0; i < cards.length; i++) { %>
+              <li class="list-group-item cards" id="card<%=i%>">
+                <div class="row cardFormat">
+                  <div class="col-md-5 frontOfCard">
+                    <img src="lettersFlashCardFront/<%= cards[i].letter %>.png">
+                  </div>
+                  <div class="col-md-5 backOfCard hideCard">
+                    <img src="lettersFlashCardBack/<%= cards[i].letter %>.png">
+                  </div>
+                </div>
+              </li>
+
+              <li hidden class="list-group-item endOfDeck" style="background-color: #FFDAB9;">
+                <h2>Congratulations! You have finished this deck.</h2>
+              </li>
+
+              <% } %>
+      </ul>
+      <div class="col-md-2 text-right cardFormatButtons">
+        <button class="flip btn btn-primary rounded-pill">Answer</button>
+        <button class="nextCard btn btn-primary rounded-pill">Next Card</button>
+      </div>
     </div>
   </div>
 
@@ -102,12 +121,13 @@
       <li class="list-group-item">
         <div class="row">
           <div class="col-md-1 dropdown downMenu">
-            <span class="pointer deckToggle nav-link liveLink dropdown-toggle" id="<%=i%>">
+            <span class="pointer deckToggle nav-link liveLink dropdown-toggle">
               <%= deckContainer[i].title %>
             </span>
             <div>
               <div class="dropdown-menu deckMenu deckMenuDisappear">
-                <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear">Study</span>
+                <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear"
+                  data-deckId="<%=deckContainer[i].id%>">Study</span>
                 <span class="col-3 btn btn-primary dropdown-item addCards dropdownDisappear">Add Cards</span>
                 <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span>
                 <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear">Delete Deck</span>
