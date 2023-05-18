@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
 const LearnSchema = new mongoose.Schema({
-  letters: {
+  image: {
     type: String,
-    required: true,
+    require: true,
+  },
+  cloudinaryId: {
+    type: String,
+    require: true,
   },
   madeBy: {
     type: mongoose.Schema.Types.ObjectId,

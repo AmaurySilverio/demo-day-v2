@@ -9,6 +9,6 @@ router.post("/deck", studyController.createDeck);
 router.post("/card/:id", studyController.createCard);
 router.get("/card/:id", studyController.getCards);
 
-// router.delete("/deletePost/:id", learnController.deletePost);
+router.delete("/deletePost/:id", studyController.deletePost);
 
 module.exports = router;

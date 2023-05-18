@@ -1,11 +1,17 @@
+const cloudinary = require("../middleware/cloudinary");
 const Learn = require("../models/Learn");
 
 module.exports = {
   getLearn: async (req, res) => {
     try {
+      const arrLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
       const letters = await Learn.find({ madeBy: req.user.id });
       console.log("Test", letters);
-      res.render("learn.ejs", { user: req.user.id, letterContainer: letters });
+      res.render("learn.ejs", {
+        arrLetters: arrLetters,
+        user: req.user.id,
+        letterContainer: letters,
+      });
       console.log("Test2", letters);
     } catch (err) {
       console.log(err);
@@ -13,8 +19,12 @@ module.exports = {
   },
   createPost: async (req, res) => {
     try {
+      // Upload image to cloudinary
+      const result = await cloudinary.uploader.upload(req.file.path);
+
       await Learn.create({
-        letters: req.body.letters,
+        image: result.secure_url,
+        cloudinaryId: result.public_id,
         madeBy: req.user.id,
       });
       console.log("Post has been added!");

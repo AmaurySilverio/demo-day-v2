@@ -34,41 +34,42 @@
       <span class="close">&times;</span>
       <section>
         <% for(var i=0; i<deckContainer.length; i++) {%>
-          <form action="/study/card/<%= deckContainer[i].id %>" method="POST">
-            <%}%>
-              <label for="letter">Word:</label>
-              <select name="letter" placeholder="Z" required>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
-                <option value="d">D</option>
-                <option value="e">E</option>
-                <option value="f">F</option>
-                <option value="g">G</option>
-                <option value="h">H</option>
-                <option value="i">I</option>
-                <option value="j">J</option>
-                <option value="k">K</option>
-                <option value="l">L</option>
-                <option value="m">M</option>
-                <option value="n">N</option>
-                <option value="o">O</option>
-                <option value="p">P</option>
-                <option value="q">Q</option>
-                <option value="r">R</option>
-                <option value="s">S</option>
-                <option value="t">T</option>
-                <option value="u">U</option>
-                <option value="v">V</option>
-                <option value="w">W</option>
-                <option value="x">X</option>
-                <option value="y">Y</option>
-                <option value="z">Z</option>
-              </select>
+          <form hidden action="/study/card/<%= deckContainer[i].id %>" method="POST" class="formHidden">
+
+            <label for="letter">Word:</label>
+            <select name="letter" placeholder="Z" required>
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="d">D</option>
+              <option value="e">E</option>
+              <option value="f">F</option>
+              <option value="g">G</option>
+              <option value="h">H</option>
+              <option value="i">I</option>
+              <option value="j">J</option>
+              <option value="k">K</option>
+              <option value="l">L</option>
+              <option value="m">M</option>
+              <option value="n">N</option>
+              <option value="o">O</option>
+              <option value="p">P</option>
+              <option value="q">Q</option>
+              <option value="r">R</option>
+              <option value="s">S</option>
+              <option value="t">T</option>
+              <option value="u">U</option>
+              <option value="v">V</option>
+              <option value="w">W</option>
+              <option value="x">X</option>
+              <option value="y">Y</option>
+              <option value="z">Z</option>
+            </select>
 
 
-              <button class="cardButton" type="submit">Submit</button>
+            <button class="cardButton" type="submit">Submit</button>
           </form>
+          <%}%>
       </section>
     </div>
   </div>
@@ -102,7 +103,7 @@
       </ul>
       <div class="col-md-2 text-right cardFormatButtons">
         <button class="flip btn btn-primary rounded-pill">Answer</button>
-        <button class="nextCard btn btn-primary rounded-pill">Next Card</button>
+        <button hidden class="nextCard btn btn-primary rounded-pill">Next Card</button>
       </div>
     </div>
   </div>
@@ -125,12 +126,18 @@
               <%= deckContainer[i].title %>
             </span>
             <div>
+              <!-- <select>
+                <option>
+                  Study
+                </option>
+              </select> -->
               <div class="dropdown-menu deckMenu deckMenuDisappear">
                 <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear"
                   data-deckId="<%=deckContainer[i].id%>">Study</span>
                 <span class="col-3 btn btn-primary dropdown-item addCards dropdownDisappear">Add Cards</span>
-                <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span>
-                <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear">Delete Deck</span>
+                <!-- <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span> -->
+                <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear"
+                  data-deckId="<%=deckContainer[i].id%>">Delete Deck</span>
               </div>
             </div>
           </div>
@@ -143,4 +150,4 @@
   </ul>
 
 
-  <%- include('partials/profileFooter') -%>
+  <%- include('partials/studyFooter') -%>
