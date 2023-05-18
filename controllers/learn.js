@@ -21,11 +21,12 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-
+      console.log("booody", req.body);
       await Learn.create({
         image: result.secure_url,
         cloudinaryId: result.public_id,
         madeBy: req.user.id,
+        letter: req.body.letter,
       });
       console.log("Post has been added!");
       res.redirect("/learn");

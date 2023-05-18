@@ -17,6 +17,9 @@ const LearnSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  letter: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Learn", LearnSchema);
