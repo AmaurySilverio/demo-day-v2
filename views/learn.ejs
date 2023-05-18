@@ -8,22 +8,11 @@
         <hr>
         <h3 class="text-center">Letters in American Sign Language:</h3>
         <% for(let i=0; i < arrLetters.length; i++){%>
-
-
-
-
           <ul class="list-group">
 
             <li class="list-group-item">
-              <div class="row">
-                <form action="/learn/createPost" enctype="multipart/form-data" method="POST">
-                  <div class="mb-3">
-                    <label for="imgUpload" class="form-label">Add Your Photo Here</label>
-                    <input type="file" class="form-control" id="imageUpload" name="file">
-                    <input value="<%=arrLetters[i]%>" name="letter" hidden>
-                    <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                  </div>
-                </form>
+              <div class="row containerStyling">
+
                 <div class="col-md-6">
                   <img class="imgSize" src="letters/<%=arrLetters[i]%>.png">
                 </div>
@@ -31,7 +20,7 @@
                   <%console.log("yo",letterContainer[x])%>
                     <%if(letterContainer[x].letter===arrLetters[i]){%>
                       <div class="col-md-4">
-                        <img class="img-fluid" src="<%= letterContainer[x].image%>" />
+                        <img class="img-fluid uploadedImg" src="<%= letterContainer[x].image%>" />
                       </div>
                       <div class="col-md-2 text-right">
                         <form action="/learn/deletePost/<%= letterContainer[x].id %>?_method=DELETE" method="POST"
@@ -41,6 +30,14 @@
                       </div>
                       <%}%>
                         <%}%>
+                          <form action="/learn/createPost" enctype="multipart/form-data" method="POST">
+                            <div class="mb-3">
+                              <label for="imgUpload" class="form-label floating-label">Add Your Photo Here</label>
+                              <input type="file" class="form-control fileSize" id="imageUpload" name="file">
+                              <input value="<%=arrLetters[i]%>" name="letter" hidden>
+                              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                            </div>
+                          </form>
               </div>
             </li>
 

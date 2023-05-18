@@ -137,6 +137,23 @@ function nextCard() {
   answer.hidden = false;
 }
 
+// Profile dropdown menu functionality
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+dropdownToggle.addEventListener("click", function () {
+  dropdownMenu.classList.toggle("show");
+});
+
+document.addEventListener("click", function (event) {
+  if (
+    !dropdownToggle.contains(event.target) &&
+    !dropdownMenu.contains(event.target)
+  ) {
+    dropdownMenu.classList.remove("show");
+  }
+});
+
 // Deck dropdown menu functionality
 const dropdownToggleDeck = document.querySelectorAll(".deckToggle");
 const dropdownDeckMenu = document.querySelectorAll(".deckMenu");
@@ -167,6 +184,7 @@ document.addEventListener("click", function (event) {
 
   if (!isDeckTitle) {
     // Hide all dropdownDeckMenus
+    console.log(isDeckTitle);
     dropdownDeckMenus.forEach(function (deckMenu) {
       deckMenu.classList.remove("show");
     });
@@ -211,17 +229,19 @@ function addCardsFunctionality() {
   cardModalContainer.style.display = "block";
 }
 
-function resetStudyModal() {
-  nextButtonClicked = 0;
-  cardsArray.forEach(function (card) {
-    card.classList.remove("hideCard");
-  });
-  endOfDeck.hidden = true;
-  answerCounter = 0;
-  nextCounter = 1;
-  answerArray[0].hidden = false;
-  backOfCardArray[0].classList.remove("seekCard");
-}
+// function addCardsFunctionality(e) {
+//   console.log(e.target);
+//   let form = document.querySelector(".formHidden");
+
+//   console.log(form.dataset.deckid);
+//   if (e.target.dataset.deckid === form.dataset.deckid) {
+//     form.classList.remove("formHidden");
+//   }
+//   // e.target.classList.remove("formHidden");
+//   // e.target.classList.add("seek");
+//   cardModalContainer.style.display = "block";
+// }
+
 // deck modal event listeners
 btn.addEventListener("click", function () {
   deckModalContainer.style.display = "block";
@@ -236,7 +256,6 @@ xclose.addEventListener("click", function () {
 
 studyCloseModal.addEventListener("click", function () {
   studyDeckModalContainer.style.display = "none";
-  // resetStudyModal();
 });
 console.log(cards);
 function showForm() {

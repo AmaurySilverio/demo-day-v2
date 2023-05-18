@@ -30,6 +30,30 @@ body{
   width: 125px;
   background-color: rgb(88,204,2)
 }
+
+/* NEW!!! */
+.fileSize{
+  width: 33%;
+}
 .imgSize{
-width: 70%;
+width: 100%;
+}
+.list-group{
+  border-radius: 35px;
+  box-shadow: 8px 5px 20px 5px #123456;
+  margin-bottom: 30px;
+}
+.list-group-item{
+  background-color: rgb(150 157 255 / 45%);
+
+}
+.containerStyling{
+  padding: 5px;
+
+}
+img{
+  border-radius: 14px;
+}
+.uploadedImg{
+  margin-left: 30px;
 }
