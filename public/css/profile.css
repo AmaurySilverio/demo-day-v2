@@ -90,6 +90,8 @@
   /* Add animation properties */
   animation: scrollImages 20s linear infinite;
   animation-delay: 2s;
+  margin-top: 12px;
+
 }
 
 .horizontal-scroll:hover {

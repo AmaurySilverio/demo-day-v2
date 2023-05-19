@@ -72,7 +72,9 @@ gap: 17px;
 .list-group-item{
   cursor: pointer;
 }
-
+.drop30{
+margin-bottom: 30px;
+}
 
 /* items that i have to change once card is clicked */
 /* .imageUploadDiv, .deleteBtnDiv{

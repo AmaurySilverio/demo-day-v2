@@ -1,114 +1,116 @@
 <%- include('partials/profileHeader') -%>
-  <h1>Study Page</h1>
-  <h2>Under Construction, Check again for updates.</h2>
-  <h4>Create and Add custom cards to your deck below.</h4>
-  <h4 class="deckTitle">Decks:</h4>
+  <!-- <h1>Study Page</h1>
+  <h2>Under Construction, Check again for updates.</h2> -->
+  <div class="study-container">
+    <div class="main-container">
+      <h4>Create and Add custom cards to your deck below.</h4>
+      <h4 class="deckTitle">Decks:</h4>
 
 
-  <div id="deckContainer">
-  </div>
+      <!-- <div id="deckContainer">
+  </div> -->
 
-  <!-- Trigger/Open The Modal -->
-  <button id="myBtn"><i class="fa-solid fa-circle-plus"></i></button>
-
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content" id="deckModalContent">
-      <span class="close">&times;</span>
-      <form action="/study/deck" method="POST">
-
-        <label for="title">Deck Name:</label>
-        <input name="title" class="deckInput" type="text" placeholder="Letters i'm struggling with" required>
-
-
-        <button class="deckButton" type="submit">Create</button>
-
-      </form>
+      <button id="myBtn"><i class="fa-solid fa-circle-plus"></i></button>
     </div>
-  </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content" id="deckModalContent">
+        <span class="close">&times;</span>
+        <form action="/study/deck" method="POST">
+
+          <label for="title">Deck Name:</label>
+          <input name="title" class="deckInput" type="text" placeholder="Letters i'm struggling with" required>
 
 
-  <div id="myModalTwo" class="modal">
-    <div class="modal-content" id="cardModalContent">
-      <span class="close">&times;</span>
-      <section>
-        <% for(var i=0; i<deckContainer.length; i++) {%>
-          <form hidden action="/study/card/<%= deckContainer[i].id %>" method="POST" class="formHidden">
+          <button class="deckButton" type="submit">Create</button>
 
-            <label for="letter">Word:</label>
-            <select name="letter" placeholder="Z" required>
-              <option value="a">A</option>
-              <option value="b">B</option>
-              <option value="c">C</option>
-              <option value="d">D</option>
-              <option value="e">E</option>
-              <option value="f">F</option>
-              <option value="g">G</option>
-              <option value="h">H</option>
-              <option value="i">I</option>
-              <option value="j">J</option>
-              <option value="k">K</option>
-              <option value="l">L</option>
-              <option value="m">M</option>
-              <option value="n">N</option>
-              <option value="o">O</option>
-              <option value="p">P</option>
-              <option value="q">Q</option>
-              <option value="r">R</option>
-              <option value="s">S</option>
-              <option value="t">T</option>
-              <option value="u">U</option>
-              <option value="v">V</option>
-              <option value="w">W</option>
-              <option value="x">X</option>
-              <option value="y">Y</option>
-              <option value="z">Z</option>
-            </select>
-
-
-            <button class="cardButton" type="submit">Submit</button>
-          </form>
-          <%}%>
-      </section>
-    </div>
-  </div>
-
-  <div id="myModalThree" class="modal">
-    <div class="modal-content rounded" id="studyDeckModalContent">
-      <span class="close">&times;</span>
-      <ul class="list-group cardContainer">
-        <% if (!cards.length) { %>
-          <li class="list-group-item" style="background-color: #FFDAB9;">
-            <h2>Add cards to your deck to begin studying.</h2>
-          </li>
-          <% } %>
-            <% for (var i=0; i < cards.length; i++) { %>
-              <li class="list-group-item cards" id="card<%=i%>">
-                <div class="row cardFormat">
-                  <div class="col-md-5 frontOfCard">
-                    <img src="lettersFlashCardFront/<%= cards[i].letter %>.png">
-                  </div>
-                  <div class="col-md-5 backOfCard hideCard">
-                    <img src="lettersFlashCardBack/<%= cards[i].letter %>.png">
-                  </div>
-                </div>
-              </li>
-
-              <li hidden class="list-group-item endOfDeck" style="background-color: #FFDAB9;">
-                <h2>Congratulations! You have finished this deck.</h2>
-              </li>
-
-              <% } %>
-      </ul>
-      <div class="col-md-2 text-right cardFormatButtons">
-        <button class="flip btn btn-primary rounded-pill">Answer</button>
-        <button hidden class="nextCard btn btn-primary rounded-pill">Next Card</button>
+        </form>
       </div>
     </div>
-  </div>
 
-  <!-- <div class="dropdown">
+
+    <div id="myModalTwo" class="modal">
+      <div class="modal-content" id="cardModalContent">
+        <span class="close">&times;</span>
+        <section>
+          <% for(var i=0; i<deckContainer.length; i++) {%>
+            <form hidden action="/study/card/<%= deckContainer[i].id %>" method="POST" class="formHidden">
+
+              <label for="letter">Word:</label>
+              <select name="letter" placeholder="Z" required>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+                <option value="f">F</option>
+                <option value="g">G</option>
+                <option value="h">H</option>
+                <option value="i">I</option>
+                <option value="j">J</option>
+                <option value="k">K</option>
+                <option value="l">L</option>
+                <option value="m">M</option>
+                <option value="n">N</option>
+                <option value="o">O</option>
+                <option value="p">P</option>
+                <option value="q">Q</option>
+                <option value="r">R</option>
+                <option value="s">S</option>
+                <option value="t">T</option>
+                <option value="u">U</option>
+                <option value="v">V</option>
+                <option value="w">W</option>
+                <option value="x">X</option>
+                <option value="y">Y</option>
+                <option value="z">Z</option>
+              </select>
+
+
+              <button class="cardButton" type="submit">Submit</button>
+            </form>
+            <%}%>
+        </section>
+      </div>
+    </div>
+
+    <div id="myModalThree" class="modal">
+      <div class="modal-content rounded" id="studyDeckModalContent">
+        <span class="close">&times;</span>
+        <ul class="list-group cardContainer">
+          <% if (!cards.length) { %>
+            <li class="list-group-item" style="background-color: #FFDAB9;">
+              <h2>Add cards to your deck to begin studying.</h2>
+            </li>
+            <% } %>
+              <% for (var i=0; i < cards.length; i++) { %>
+                <li class="list-group-item cards" id="card<%=i%>">
+                  <div class="row cardFormat">
+                    <div class="col-md-5 frontOfCard">
+                      <img src="lettersFlashCardFront/<%= cards[i].letter %>.png">
+                    </div>
+                    <div class="col-md-5 backOfCard hideCard">
+                      <img src="lettersFlashCardBack/<%= cards[i].letter %>.png">
+                    </div>
+                  </div>
+                </li>
+
+                <li hidden class="list-group-item endOfDeck" style="background-color: #FFDAB9;">
+                  <h2>Congratulations! You have finished this deck.</h2>
+                </li>
+
+                <% } %>
+        </ul>
+        <div class="col-md-2 text-right cardFormatButtons">
+          <button class="flip btn btn-primary rounded-pill">Answer</button>
+          <button hidden class="nextCard btn btn-primary rounded-pill">Next Card</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="dropdown">
     <span class="nav-link liveLink dropdown-toggle" id="profile-btn" href="">Profile</span>
     <div class="dropdown-menu">
       <a href="" class="col-3 btn btn-primary dropdown-item">Account</a>
@@ -117,38 +119,39 @@
   </div> -->
 
 
-  <ul class="dropDownParent">
-    <% for(var i=0; i<deckContainer.length; i++) {%>
-      <li class="list-group-item">
-        <div class="row">
-          <div class="col-md-1 dropdown downMenu">
-            <span class="pointer deckToggle nav-link liveLink dropdown-toggle">
-              <%= deckContainer[i].title %>
-            </span>
-            <div>
-              <!-- <select>
+    <ul class="dropDownParent">
+      <% for(var i=0; i<deckContainer.length; i++) {%>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-1 dropdown downMenu">
+              <span class="pointer deckToggle nav-link liveLink dropdown-toggle">
+                <%= deckContainer[i].title %>
+              </span>
+              <div>
+                <!-- <select>
                 <option>
                   Study
                 </option>
               </select> -->
-              <div class="dropdown-menu deckMenu deckMenuDisappear">
-                <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear"
-                  data-deckId="<%=deckContainer[i].id%>">Study</span>
-                <span class="col-3 btn btn-primary dropdown-item addCards dropdownDisappear"
-                  data-deckId="<%=deckContainer[i].id%>">Add Cards</span>
-                <!-- <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span> -->
-                <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear"
-                  data-deckId="<%=deckContainer[i].id%>">Delete Deck</span>
+                <div class="dropdown-menu deckMenu deckMenuDisappear">
+                  <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear"
+                    data-deckId="<%=deckContainer[i].id%>">Study</span>
+                  <span class="col-3 btn btn-primary dropdown-item addCards dropdownDisappear"
+                    data-deckId="<%=deckContainer[i].id%>">Add Cards</span>
+                  <!-- <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span> -->
+                  <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear"
+                    data-deckId="<%=deckContainer[i].id%>">Delete Deck</span>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- <div class="col-md-1 text-right">
+            <!-- <div class="col-md-1 text-right">
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </div> -->
-        </div>
-      </li>
-      <% } %>
-  </ul>
+          </div>
+        </li>
+        <% } %>
+    </ul>
+  </div>
 
 
   <%- include('partials/studyFooter') -%>

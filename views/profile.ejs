@@ -1,10 +1,26 @@
 <%- include('partials/profileHeader') -%>
   <div class="container">
+
+    <div class="main-container">
+      <div class="main-content">
+        <h1>Welcome Back!</h1>
+        <img src="/imgs/giphy.gif" alt="image">
+        <h2>Remember to check in with the other members of the ASL Lingo Community below!</h2>
+
+      </div>
+      <div class="main-message">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, vitae, hic, doloribus dolorem nulla
+          modi exercitationem est laboriosam aperiam delectus odio itaque impedit aliquid repellendus dignissimos qui
+          repudiandae? Eum incidunt ex cupiditate. Minus, saepe soluta reprehenderit ipsam sint, mollitia nam
+          consequatur tenetur dolorem cupiditate quis deserunt laudantium voluptas. Corrupti, possimus.</p>
+
+      </div>
+    </div>
     <div class="row mt-5">
       <div class="col-6">
 
         <div class="mt-5">
-          <h2>Add a post</h2>
+          <h2>Introduce Yourself</h2>
           <form action="/post/createPost" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
               <label for="title" class="form-label">Title</label>
@@ -40,7 +56,7 @@
         </div>
       </ul>
       <div class="row justify-content-center mt-5">
-        <a class="btn btn-primary" href="/feed">Return to Feed</a>
+        <a hidden class="btn btn-primary" href="/feed">Return to Feed</a>
       </div>
     </div>
   </div>

@@ -88,3 +88,15 @@
 .seekCard{
   display: flex;
 }
+.dropDownParent{
+  display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px;
+    justify-content: start;
+    margin-top: 20px
+}
+.study-container{
+  padding-left: 180px;
+  padding-right: 180px;
+  margin-top: 26px;
+}

@@ -6,6 +6,7 @@ const postsController = require("../controllers/posts");
 const aboutController = require("../controllers/about");
 const liveTranslationController = require("../controllers/liveTranslation");
 const learnController = require("../controllers/learn");
+const dictionaryController = require("../controllers/dictionary");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Main Routes - simplified for now
@@ -17,6 +18,8 @@ router.get(
   ensureAuth,
   liveTranslationController.getLiveTranslation
 );
+router.get("/dictionary", ensureAuth, dictionaryController.getDictionary);
+
 router.get("/learn", ensureAuth, learnController.getLearn);
 router.get("/feed", ensureAuth, postsController.getFeed);
 router.get("/login", authController.getLogin);
