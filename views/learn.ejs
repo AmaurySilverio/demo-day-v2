@@ -7,45 +7,100 @@
           each step down the path.</h1>
         <hr>
         <h3 class="text-center">Letters in American Sign Language:</h3>
-        <% for(let i=0; i < arrLetters.length; i++){%>
-          <ul class="list-group">
+        <div class="image-container">
+          <%console.log("jump", {selectedLetter})%>
+            <% for(let i=0; i < arrLetters.length; i++){%>
+              <ul class="list-group">
 
-            <li class="list-group-item">
-              <div class="row containerStyling">
+                <li class="list-group-item" data-id="<%=arrLetters[i]%>">
+                  <div class="row containerStyling">
 
-                <div class="col-md-6">
-                  <img class="imgSize" src="letters/<%=arrLetters[i]%>.png">
-                </div>
-                <% for(let x=0; x < letterContainer.length; x++){%>
-                  <%console.log("yo",letterContainer[x])%>
-                    <%if(letterContainer[x].letter===arrLetters[i]){%>
+                    <div class="col-md-6">
+                      <img class="imgSize" src="letters/<%=arrLetters[i]%>.png">
+                    </div>
+                    <% for(let x=0; x < letterContainer.length; x++){%>
+
+                      <%if(letterContainer[x].letter===arrLetters[i]){%>
+                        <div hidden class="col-md-4">
+                          <img class="img-fluid uploadedImg" src="<%= letterContainer[x].image%>" />
+                        </div>
+                        <div hidden class="col-md-2 text-right deleteBtnDiv">
+                          <form action="/learn/deletePost/<%= letterContainer[x].id %>?_method=DELETE" method="POST"
+                            class="col-3">
+                            <button class="fa fa-trash" type="submit"></button>
+                          </form>
+                        </div>
+                        <%}%>
+                          <%}%>
+                            <form action="/learn/createPost" enctype="multipart/form-data" method="POST">
+                              <div hidden class="mb-3 imageUploadDiv">
+                                <label for="imgUpload" class="form-label floating-label">Add Your Photo Here</label>
+                                <input type="file" class="form-control fileSize" id="imageUpload" name="file">
+                                <input value="<%=arrLetters[i]%>" name="letter" hidden>
+                                <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                              </div>
+                            </form>
+                  </div>
+                </li>
+              </ul>
+              <%}%>
+
+        </div>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <% for(let i=0; i < arrLetters.length; i++){%>
+
+
+
+              <ul class="list-group">
+
+                <li class="list-group-item">
+                  <div class="row containerStyling">
+
+                    <div class="col-md-6">
+                      <img class="imgSize" src="letters/<%=arrLetters[i]%>.png">
+                    </div>
+                    <% for(let x=0; x < letterContainer.length; x++){%>
+
+
+
                       <div class="col-md-4">
                         <img class="img-fluid uploadedImg" src="<%= letterContainer[x].image%>" />
                       </div>
-                      <div class="col-md-2 text-right">
+                      <div class="col-md-2 text-right deleteBtnDiv">
                         <form action="/learn/deletePost/<%= letterContainer[x].id %>?_method=DELETE" method="POST"
                           class="col-3">
                           <button class="fa fa-trash" type="submit"></button>
                         </form>
                       </div>
                       <%}%>
-                        <%}%>
-                          <form action="/learn/createPost" enctype="multipart/form-data" method="POST">
-                            <div class="mb-3">
-                              <label for="imgUpload" class="form-label floating-label">Add Your Photo Here</label>
-                              <input type="file" class="form-control fileSize" id="imageUpload" name="file">
-                              <input value="<%=arrLetters[i]%>" name="letter" hidden>
-                              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                            </div>
-                          </form>
-              </div>
-            </li>
 
-          </ul>
-          <%}%>
+                        <form action="/learn/createPost" enctype="multipart/form-data" method="POST">
+                          <div class="mb-3 imageUploadDiv">
+                            <label for="imgUpload" class="form-label floating-label">Add Your Photo
+                              Here</label>
+                            <input type="file" class="form-control fileSize" id="imageUpload" name="file">
+                            <input value="<%=arrLetters[i]%>" name="letter" hidden>
+                            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                          </div>
+                        </form>
+                  </div>
+                </li>
+              </ul>
+              <%}%>
 
 
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
+
+
+
   <%- include('partials/learnFooter') -%>

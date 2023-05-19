@@ -23,3 +23,84 @@
   width: 125px;
   background-color: rgb(88,204,2)
 }
+/* Automatic scrolling styling */
+/* .container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  animation-name: scrollImages;
+  animation: scrollImages 20s linear infinite;
+}
+
+.horizontal-scroll img {
+  flex: 0 0 auto;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+@keyframes scrollImages {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 10px));
+  }
+} */
+
+.container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.image-container {
+  display: flex;
+  /* Adjust the width to accommodate all the images */
+  width: fit-content;
+}
+
+.horizontal-scroll img {
+  flex: 0 0 auto;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+@keyframes scrollImages {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Adjust the translation value based on the width of the image container */
+    transform: translateX(-100%);
+  }
+}
+
+.horizontal-scroll {
+  /* Add animation properties */
+  animation: scrollImages 20s linear infinite;
+  animation-delay: 2s;
+}
+
+.horizontal-scroll:hover {
+  /* Pause animation on hover */
+  animation-play-state: paused;
+}
+
+.horizontal-scroll:not(:hover) {
+  /* Resume animation when not hovering */
+  animation-play-state: running;
+}
+.noOverflow{
+  overflow: visible;
+}

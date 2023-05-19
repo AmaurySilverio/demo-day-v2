@@ -25,3 +25,53 @@ document.addEventListener("click", function (event) {
     dropdownMenu.classList.remove("show");
   }
 });
+// Img Scroll effect
+$(document).ready(function () {
+  var images = $(".horizontal-scroll img");
+
+  images.hover(
+    function () {
+      $(this).css("animation-play-state", "paused");
+    },
+    function () {
+      $(this).css("animation-play-state", "running");
+    }
+  );
+});
+
+// Doesn't work
+
+// $(document).ready(function() {
+//   var images = $(".horizontal-scroll img");
+//   var containerWidth = $(".container").width();
+//   var totalWidth = 0;
+
+//   // Clone and append the images
+//   images.clone().appendTo(".horizontal-scroll");
+
+//   // Calculate the total width of the images
+//   images.each(function() {
+//     totalWidth += $(this).outerWidth(true);
+//   });
+
+//   // Set the width of the container to accommodate the duplicated images
+//   $(".horizontal-scroll").width(totalWidth * 2);
+
+//   function scrollImages() {
+//     $(".horizontal-scroll").animate({ "margin-left": -totalWidth }, 10000, "linear", function() {
+//       $(".horizontal-scroll").css("margin-left", 0);
+//       scrollImages();
+//     });
+//   }
+
+//   scrollImages();
+
+//   images.hover(
+//     function() {
+//       $(".horizontal-scroll").stop();
+//     },
+//     function() {
+//       scrollImages();
+//     }
+//   );
+// });

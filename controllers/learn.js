@@ -4,15 +4,87 @@ const Learn = require("../models/Learn");
 module.exports = {
   getLearn: async (req, res) => {
     try {
-      const arrLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+      console.log("hello?", { val: req.params.id });
+      const arrLetters = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+      ];
       const letters = await Learn.find({ madeBy: req.user.id });
-      console.log("Test", letters);
+      // console.log("Test", letters);
       res.render("learn.ejs", {
         arrLetters: arrLetters,
         user: req.user.id,
         letterContainer: letters,
+        selectedLetter: req.params.id,
       });
-      console.log("Test2", letters);
+      // console.log("Test2", letters);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getCard: async (req, res) => {
+    console.log("redsaw", req.params.id);
+    const arrLetters = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+    ];
+    const letters = await Learn.find({ madeBy: req.user.id });
+    try {
+      res.render("learn.ejs", {
+        arrLetters: arrLetters,
+        user: req.user.id,
+        letterContainer: letters,
+        arrLetters: arrLetters,
+        selectedLetter: req.params.id,
+      });
     } catch (err) {
       console.log(err);
     }
