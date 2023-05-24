@@ -8,40 +8,105 @@ cardsArray.forEach((card) => {
 
     let cardId =
       card.target.attributes.src.ownerElement.offsetParent.dataset.id;
+    let selectedLetterInput = document.getElementById("selectedLetter");
+    selectedLetterInput.value = cardId;
+
+    console.log(selectedLetterInput.value);
+    console.log(cardId);
     fetch(`/learn/getCard/${cardId}`, {
       method: "get",
     })
       .then((response) => response.json())
       .then((jsonData) => {
+        let selectedCard = document.getElementById(jsonData.selectedLetter);
+        let modalContent = document.getElementById("modal-content");
         console.log(jsonData);
+        // console.log(selectedCard);
+        let imgSize = document.getElementById("newImg");
+        let uploadedImg = document.getElementById("uploadedImg");
+        let newLetterContainer = jsonData.letterContainer[0];
+
+        if (newLetterContainer.image) {
+          // add logic here
+        }
+        // cardsArray.forEach((card) => {
+        //   if (card.classList) {
+        //   // card.classList.add("updatedCard");
+        //   // card.target.closest(".list-group-item").classList.add("clicked");
+        //         }
+        //     });
+        // console.log(newLetterContainer[0].letter);
+
+        // DELETE        DELETE  DELETE        DELETE        DELETE  DELETE         DELETE        DELETE  DELETE
+
+        // let deleteImgLetterInput = document.getElementById("deleteImgLetter");
+        // deleteImgLetterInput.value = newLetterContainer._Id;
+
+        let newArrLetters = jsonData.arrLetters;
+        // for (let i = 0; i < newArrLetters.length; i++) {
+        if (!newLetterContainer) {
+          imgSize.src = `letters/${cardId}.png`;
+          uploadedImg.src = "";
+          console.log("undefined for real");
+          let imgUploadFormInput = document.getElementById("imgUploadForm");
+          imgUploadFormInput.hidden = false;
+
+          // DELETE        DELETE  DELETE        DELETE        DELETE  DELETE         DELETE        DELETE  DELETE
+          // let deleteBtnDiv = document.getElementById("deleteBtnDiv");
+          // deleteBtnDiv.hidden = true;
+          // if (newLetterContainer[i].letter === cardId) {
+          //   return;
+          // }
+        }
+        //  if (
+        //   // newLetterContainer[i]
+        //   // newArrLetters[i] === cardId &&
+        //   newLetterContainer.letter === jsonData.selectedLetter
+        // )
+        else {
+          console.log("working", newLetterContainer.letter);
+          console.log(newLetterContainer.image);
+          imgSize.src = `letters/${cardId}.png`;
+          uploadedImg.src = `${newLetterContainer.image}`;
+          let imgUploadFormInput = document.getElementById("imgUploadForm");
+          imgUploadFormInput.hidden = true;
+          console.log("newLetterContainer.length", newLetterContainer.image);
+
+          let updatedCard = cardsArray.forEach((card) => {
+            if (newLetterContainer.image) {
+              // card.classList.add("updatedCard");
+              // card.target.closest(".list-group-item").classList.add("clicked");
+            }
+          });
+          // DELETE        DELETE  DELETE        DELETE        DELETE  DELETE         DELETE        DELETE  DELETE
+          // let deleteBtnDiv = document.getElementById("deleteBtnDiv");
+          // deleteBtnDiv.hidden = false;
+          // if (newLetterContainer[i].letter === cardId) {
+          //   return;
+          // }
+          // if(newLetterContainer[i]){
+
+          // }
+          // uploadedImg.src = `${newLetterContainer[i].image}`;
+        }
+        // }
+        modal.style.display = "block";
+        // modalContent.appendChild(selectedCard);
+        // let deleteBtnDiv = document.getElementById("deleteBtnDiv");
+        // deleteBtnDiv.hidden = false;
+        // let imageUploadDiv = document.getElementById("imageUploadDiv");
+        // imageUploadDiv.hidden = false;
       });
-    modal.style.display = "block";
   });
 });
 
-// function retrieveCards(e) {
-//   let deckId = e.target.dataset.deckid;
-//   fetch(`/study/card/${deckId}`)
-//     .then((response) => response.json())
-//     .then((jsonData) => {
-//       cardContainer.innerHTML = "";
-//       jsonData.forEach((item) => {
-//         cardContainer.appendChild(createCards(item.letter));
-//       });
-//       console.log(jsonData);
-//       console.log(e.target.dataset);
-//       cards = document.querySelectorAll(".cards");
-//       cardsArray = Array.from(cards);
-//       studyDeckModalContainer.style.display = "block";
-//       cardsArray.forEach((card) => {
-//         console.log(card);
-//         card.classList.toggle("hideCard");
-//       });
-//       cardsArray[0].classList.toggle("hideCard");
-//     });
-//   index = 0;
-//   answer.hidden = false;
-//   nextCardButton.hidden = true;
+// function checkCards(){
+//   cardsArray.forEach((card) => {
+//     if (card.classList) {
+//       // card.classList.add("updatedCard");
+//       // card.target.closest(".list-group-item").classList.add("clicked");
+//     }
+//   });
 // }
 
 // Get the modal
@@ -50,6 +115,8 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
+  let uploadedImg = document.getElementById("uploadedImg");
+  uploadedImg.src = "";
   modal.style.display = "none";
 };
 // When the user clicks anywhere outside of the modal, close it

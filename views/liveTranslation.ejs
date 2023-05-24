@@ -1,17 +1,30 @@
 <%- include('partials/liveTranslationHeader') -%>
-  <h1>Under Construction, Check again for updates.</h1>
+  <!-- <h1>Under Construction, Check again for updates.</h1>
 
-  <h1 class="fontTest">Under Construction Check again for updates</h1>
-  <div class="textToSign">
-    <input id="text" type="text" placeholder="hello">
-    <button class="textToSignBtn" type="submit">Translate</button>
-    <input name="speed" type="range" id="speed" min="40" max="200" step="10" value="120">
-    <label for="speed" id="speedOfText">Speed</label>
-    <div class='player'>
-      <p class="translatedText fontTest">
+  <h1 class="fontTest">Under Construction Check again for updates</h1> -->
+  <div class="main-container">
+    <div class="title-container">
+      <h2>Enter a letter, word, or sentence and follow the playback to practice fingerspelling!</h2>
+      <h4>Adjust the speed of the video playback accordingly.</h4>
+    </div>
+    <hr>
+    <div class="textToSign">
+      <div class="input-container">
+        <input id="text" type="text" placeholder="hello">
+        <button class="textToSignBtn" type="submit">Translate</button>
+      </div>
+      <div class="speed-container">
+        <input name="speed" type="range" id="speed" min="40" max="200" step="10" value="120">
+        <label for="speed" id="speedOfText">Speed</label>
+      </div>
+      <div class='player'>
+        <p class="translatedText fontTest">
 
 
-      </p>
+
+
+        </p>
+      </div>
     </div>
   </div>
   <%- include('partials/liveTranslationFooter') -%>

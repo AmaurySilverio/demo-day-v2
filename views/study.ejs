@@ -1,14 +1,14 @@
-<%- include('partials/profileHeader') -%>
+<%- include('partials/studyHeader') -%>
   <!-- <h1>Study Page</h1>
   <h2>Under Construction, Check again for updates.</h2> -->
   <div class="study-container">
     <div class="main-container">
-      <h4>Create and Add custom cards to your deck below.</h4>
+      <h4>Create and add cards to your deck below.</h4>
       <h4 class="deckTitle">Decks:</h4>
 
 
       <!-- <div id="deckContainer">
-  </div> -->
+        </div> -->
 
       <button id="myBtn"><i class="fa-solid fa-circle-plus"></i></button>
     </div>
@@ -118,39 +118,40 @@
     </div>
   </div> -->
 
-
-    <ul class="dropDownParent">
-      <% for(var i=0; i<deckContainer.length; i++) {%>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-1 dropdown downMenu">
-              <span class="pointer deckToggle nav-link liveLink dropdown-toggle">
-                <%= deckContainer[i].title %>
-              </span>
-              <div>
-                <!-- <select>
+    <div class="deckContainer">
+      <ul class="dropDownParent">
+        <% for(var i=0; i<deckContainer.length; i++) {%>
+          <li class="list-group-item titleStyle">
+            <div class="row">
+              <div class="col-md-1 dropdown downMenu">
+                <span class="pointer deckToggle nav-link liveLink dropdown-toggle">
+                  <%= deckContainer[i].title %>
+                </span>
+                <div>
+                  <!-- <select>
                 <option>
                   Study
                 </option>
               </select> -->
-                <div class="dropdown-menu deckMenu deckMenuDisappear">
-                  <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear"
-                    data-deckId="<%=deckContainer[i].id%>">Study</span>
-                  <span class="col-3 btn btn-primary dropdown-item addCards dropdownDisappear"
-                    data-deckId="<%=deckContainer[i].id%>">Add Cards</span>
-                  <!-- <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span> -->
-                  <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear"
-                    data-deckId="<%=deckContainer[i].id%>">Delete Deck</span>
+                  <div class="dropdown-menu deckMenu deckMenuDisappear">
+                    <span class="col-3 btn btn-primary dropdown-item study dropdownDisappear"
+                      data-deckId="<%=deckContainer[i].id%>">Study</span>
+                    <span class="col-3 btn btn-primary dropdown-item addCards dropdownDisappear"
+                      data-deckId="<%=deckContainer[i].id%>">Add Cards</span>
+                    <!-- <span class="col-3 btn btn-primary dropdown-item deleteCards dropdownDisappear">Delete Cards</span> -->
+                    <span class="col-3 btn btn-primary dropdown-item deleteDeck dropdownDisappear"
+                      data-deckId="<%=deckContainer[i].id%>">Delete Deck</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <!-- <div class="col-md-1 text-right">
+              <!-- <div class="col-md-1 text-right">
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </div> -->
-          </div>
-        </li>
-        <% } %>
-    </ul>
+            </div>
+          </li>
+          <% } %>
+      </ul>
+    </div>
   </div>
 
 

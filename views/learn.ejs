@@ -12,7 +12,7 @@
             <% for(let i=0; i < arrLetters.length; i++){%>
               <ul class="list-group">
 
-                <li class="list-group-item" data-id="<%=arrLetters[i]%>">
+                <li class="list-group-item" data-id="<%=arrLetters[i]%>" id="<%=arrLetters[i]%>">
                   <div class="row containerStyling">
 
                     <div class="col-md-6">
@@ -24,7 +24,7 @@
                         <div hidden class="col-md-4">
                           <img class="img-fluid uploadedImg" src="<%= letterContainer[x].image%>" />
                         </div>
-                        <div hidden class="col-md-2 text-right deleteBtnDiv">
+                        <div hidden class="col-md-2 text-right" id="deleteBtnDiv">
                           <form action="/learn/deletePost/<%= letterContainer[x].id %>?_method=DELETE" method="POST"
                             class="col-3">
                             <button class="fa fa-trash" type="submit"></button>
@@ -33,7 +33,7 @@
                         <%}%>
                           <%}%>
                             <form action="/learn/createPost" enctype="multipart/form-data" method="POST">
-                              <div hidden class="mb-3 imageUploadDiv">
+                              <div hidden class="mb-3" id="imageUploadDiv">
                                 <label for="imgUpload" class="form-label floating-label">Add Your Photo Here</label>
                                 <input type="file" class="form-control fileSize" id="imageUpload" name="file">
                                 <input value="<%=arrLetters[i]%>" name="letter" hidden>
@@ -43,58 +43,71 @@
                   </div>
                 </li>
               </ul>
-              <%}%>
+              <%if(selectedLetter){%>
+                <%console.log("working")%>
+                  <p>working</p>
+                  <%}%>
+                    <%}%>
+
 
         </div>
 
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
-          <div class="modal-content">
+          <div class="modal-content" id="modal-content">
             <span class="close">&times;</span>
-            <% for(let i=0; i < arrLetters.length; i++){%>
 
 
 
-              <ul class="list-group">
 
-                <li class="list-group-item">
-                  <div class="row containerStyling">
+            <ul class="list-group">
 
-                    <div class="col-md-6">
-                      <img class="imgSize" src="letters/<%=arrLetters[i]%>.png">
-                    </div>
-                    <% for(let x=0; x < letterContainer.length; x++){%>
+              <li class="list-group-item">
+                <div class="row containerStyling">
 
-
-
-                      <div class="col-md-4">
-                        <img class="img-fluid uploadedImg" src="<%= letterContainer[x].image%>" />
-                      </div>
-                      <div class="col-md-2 text-right deleteBtnDiv">
-                        <form action="/learn/deletePost/<%= letterContainer[x].id %>?_method=DELETE" method="POST"
-                          class="col-3">
-                          <button class="fa fa-trash" type="submit"></button>
-                        </form>
-                      </div>
-                      <%}%>
-
-                        <form action="/learn/createPost" enctype="multipart/form-data" method="POST">
-                          <div class="mb-3 imageUploadDiv">
-                            <label for="imgUpload" class="form-label floating-label">Add Your Photo
-                              Here</label>
-                            <input type="file" class="form-control fileSize" id="imageUpload" name="file">
-                            <input value="<%=arrLetters[i]%>" name="letter" hidden>
-                            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                          </div>
-                        </form>
+                  <div class="col-md-6">
+                    <img class="imgSize" id="newImg" src="">
                   </div>
-                </li>
-              </ul>
-              <%}%>
+
+
+
+
+                  <div class="col-md-4">
+                    <img class="img-fluid uploadedImg" id="uploadedImg" src="" />
+                  </div>
+                  <div class="col-md-2 text-right deleteBtnDiv">
+
+                  </div>
+                  <div hidden class="col-md-2 text-right" id="deleteBtnDiv">
+                    <form action="/learn/deletePost/?_method=DELETE" method="POST" class="col-3">
+                      <button class="fa fa-trash" type="submit"></button>
+                      <input value="" name="id" id="deleteImgLetter" hidden>
+                    </form>
+                  </div>
+                  <form action="/learn/createPost" enctype="multipart/form-data" method="POST" id="imgUploadForm">
+                    <div class="mb-3 imageUploadDiv">
+                      <label for="imgUpload" class="form-label floating-label">Add Your Photo
+                        Here</label>
+                      <input type="file" class="form-control fileSize" id="imageUpload" name="file">
+                      <input value="" name="letter" id="selectedLetter" hidden>
+                      <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+                    </div>
+                  </form>
+
+
+
+
+
+                </div>
+              </li>
+            </ul>
+
+
 
 
           </div>
+
 
         </div>
       </div>

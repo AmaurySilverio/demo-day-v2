@@ -1,3 +1,59 @@
+/* Header */
+/* Profile button */
+#profile-btn{
+  cursor: pointer;
+}
+/* html */
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+/* Footer */
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.layout-container{
+  margin: 0 auto;
+  /* max-width: 1140px; */
+  min-height: 70px;
+  text-align: center;
+  background-color: #f8f9fa!important;
+    opacity: 83%;
+}
+.footer-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-header h2{
+  margin-right: 48px;
+  color: white;
+}
+.footer-header a{
+  width: 125px;
+  background-color: rgb(88,204,2)
+}
+.footer-links{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+}
+/* .copyright{
+  margin-top: 15px;
+  padding-bottom: 15px;
+} */
+.headerImg{
+  /* background-image: url("/imgs/header-image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; */
+  /* width: 100% !important; */
+}
+.bg-light{
+  /* opacity: 83%; */
+}
+
 /* ADDED AFTER COPYING CSS FILE */
 
 .deckTitle{
@@ -16,6 +72,8 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(150 157 255 / 45%);
+    border-radius: 20px;
   }
   /* #cardAddition{
     display: none;
@@ -27,6 +85,9 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 35px;
+    box-shadow: 8px 5px 20px 5px #123456;
+    margin-bottom: 30px;
   }
   
   /* The Close Button */
@@ -100,3 +161,41 @@
   padding-right: 180px;
   margin-top: 26px;
 }
+.deckContainer{
+  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+}
+.main-container{
+  text-align: center;
+}
+body{
+  background: url(../imgs/learnBackground.png) no-repeat; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.titleStyle{
+  border-radius: 20px !important;
+  height: 134px;
+  width: 224px;
+    box-shadow: 11px 13px 0px 5px #123456;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+  
+}
+
+/* .list-group{
+  border-radius: 35px;
+  box-shadow: 8px 5px 20px 5px #123456;
+  margin-bottom: 30px;
+} */
+/* .list-group-item{
+  background-color: rgb(150 157 255 / 45%);
+} */

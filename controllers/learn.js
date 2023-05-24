@@ -4,7 +4,7 @@ const Learn = require("../models/Learn");
 module.exports = {
   getLearn: async (req, res) => {
     try {
-      console.log("hello?", { val: req.params.id });
+      // console.log("hello?", { val: req.params.id });
       const arrLetters = [
         "a",
         "b",
@@ -76,13 +76,16 @@ module.exports = {
       "y",
       "z",
     ];
-    const letters = await Learn.find({ madeBy: req.user.id });
+    const letters = await Learn.find({
+      madeBy: req.user.id,
+      letter: req.params.id,
+    });
+    console.log("letters", letters);
     try {
-      res.render("learn.ejs", {
+      res.send(200, {
         arrLetters: arrLetters,
         user: req.user.id,
         letterContainer: letters,
-        arrLetters: arrLetters,
         selectedLetter: req.params.id,
       });
     } catch (err) {
@@ -109,7 +112,7 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       // Delete post from db
-      await Learn.remove({ _id: req.params.id });
+      await Learn.remove({ _id: req.body.id });
       console.log("Deleted Post");
       res.redirect("/learn");
     } catch (err) {

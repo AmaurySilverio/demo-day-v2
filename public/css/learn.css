@@ -12,12 +12,23 @@ body{
 #profile-btn{
   cursor: pointer;
 }
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
 /* Footer */
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 .layout-container{
   margin: 0 auto;
-  max-width: 1140px;
+  /* max-width: 1140px; */
   min-height: 70px;
   text-align: center;
+  background-color: #f8f9fa!important;
+    opacity: 83%;
 }
 .footer-header{
   display: flex;
@@ -32,8 +43,29 @@ body{
   width: 125px;
   background-color: rgb(88,204,2)
 }
+.footer-links{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+}
+/* .copyright{
+  margin-top: 15px;
+  padding-bottom: 15px;
+} */
+.container{
+  /* background-image: url("/imgs/header-image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; */
+  /* width: 100% !important; */
+}
+/* .bg-light{
+  opacity: 83%;
+} */
 
 /* NEW!!! */
+.mt-5{
+  margin-bottom: 70px;
+}
 .fileSize{
   width: 33%;
 }
@@ -47,7 +79,9 @@ width: 100%;
 }
 .list-group-item{
   background-color: rgb(150 157 255 / 45%);
-
+}
+.updatedCard{
+  background-color: rgb(175 255 150 / 45%);
 }
 .containerStyling{
   padding: 5px;

@@ -1,10 +1,7 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-#page-container {
-  position: relative;
-  min-height: 100vh;
+/* Header */
+/* Profile button */
+#profile-btn{
+  cursor: pointer;
 }
 /* Footer */
 footer{
@@ -42,35 +39,14 @@ footer{
   margin-top: 15px;
   padding-bottom: 15px;
 } */
-
-/* Dictionary Styling */
-h1 {
-  margin-top: 20px;
-}
-
-.search-bar {
-  margin: 20px 0;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  margin-bottom: 20px;
-  padding-bottom: 70px;
-}
-
-.grid-item {
-  border: 1px solid #ddd;
-  padding: 10px;
+body{
   text-align: center;
-  cursor: pointer;
 }
-
-.grid-item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+ul{
+list-style-type: none;
+}
+ul a{
+  text-decoration: none;
 }
 .container{
   background-image: url("/imgs/header-image.jpg");

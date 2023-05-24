@@ -26,18 +26,18 @@ document.addEventListener("click", function (event) {
   }
 });
 // Img Scroll effect
-$(document).ready(function () {
-  var images = $(".horizontal-scroll img");
+// $(document).ready(function () {
+//   var images = $(".horizontal-scroll img");
 
-  images.hover(
-    function () {
-      $(this).css("animation-play-state", "paused");
-    },
-    function () {
-      $(this).css("animation-play-state", "running");
-    }
-  );
-});
+//   images.hover(
+//     function () {
+//       $(this).css("animation-play-state", "paused");
+//     },
+//     function () {
+//       $(this).css("animation-play-state", "running");
+//     }
+//   );
+// });
 
 // Doesn't work
 
