@@ -27,7 +27,7 @@
                         <div hidden class="col-md-2 text-right" id="deleteBtnDiv">
                           <form action="/learn/deletePost/<%= letterContainer[x].id %>?_method=DELETE" method="POST"
                             class="col-3">
-                            <button class="fa fa-trash" type="submit"></button>
+                            <!-- <button class="fa fa-trash" type="submit"></button> -->
                           </form>
                         </div>
                         <%}%>
@@ -79,7 +79,7 @@
                   <div class="col-md-2 text-right deleteBtnDiv">
 
                   </div>
-                  <div hidden class="col-md-2 text-right" id="deleteBtnDiv">
+                  <div class="col-md-2 text-right" id="deleteBtnDiv">
                     <form action="/learn/deletePost/?_method=DELETE" method="POST" class="col-3">
                       <button class="fa fa-trash" type="submit"></button>
                       <input value="" name="id" id="deleteImgLetter" hidden>

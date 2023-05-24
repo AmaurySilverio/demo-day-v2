@@ -9,13 +9,47 @@
 
       </div>
       <div class="main-message">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, vitae, hic, doloribus dolorem nulla
+        <p class="introBlurb">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, vitae, hic,
+          doloribus dolorem nulla
           modi exercitationem est laboriosam aperiam delectus odio itaque impedit aliquid repellendus dignissimos qui
           repudiandae? Eum incidunt ex cupiditate. Minus, saepe soluta reprehenderit ipsam sint, mollitia nam
           consequatur tenetur dolorem cupiditate quis deserunt laudantium voluptas. Corrupti, possimus.</p>
 
       </div>
     </div>
+
+    <div class="mt-5">
+      <h2>Introduce Yourself Below</h2>
+      <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+        <div class="mb-3">
+          <label for="title" class="form-label">Name</label>
+          <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="mb-3">
+          <label for="caption" class="form-label">Intro Blurb</label>
+          <textarea class="form-control" id="caption" name="caption"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="imgUpload" class="form-label">Image</label>
+          <input type="file" class="form-control" id="imageUpload" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+      </form>
+    </div>
+
+    <ul class="list-unstyled">
+      <div class="horizontal-scroll">
+        <% for(var i=0; i<posts.length; i++) {%>
+          <li class="">
+            <div class="image-container">
+              <a href="/post/<%= posts[i]._id%>">
+                <img class="img-fluid" src="<%= posts[i].image%>">
+              </a>
+            </div>
+          </li>
+          <% } %>
+      </div>
+    </ul>
 
   </div>
 

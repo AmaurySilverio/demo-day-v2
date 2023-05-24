@@ -1,3 +1,12 @@
+/* Body */
+body{
+  background: url(../imgs/learnBackground.png) no-repeat; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 /* Header */
 /* Profile button */
 #profile-btn{
@@ -49,11 +58,38 @@ ul a{
   text-decoration: none;
 }
 .container{
-  background-image: url("/imgs/header-image.jpg");
+  /* background-image: url("/imgs/header-image.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   /* width: 100% !important; */
 }
 .bg-light{
-  opacity: 83%;
+  /* opacity: 83%; */
+}
+.about-container{
+  display: flex;
+    flex-direction: column;
+    margin: 0 74px;
+    margin-top: 30px;
+}
+h2{
+  margin-bottom: 22px;
+}
+p{
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: 11px 13px 7px 5px #123456;
+  background: white;
+  opacity: 90%;
+  width: 80%;
+    margin: 0 auto;
+    padding: 21px;
+    line-height: 2.1;
+}
+.contact{
+  margin-top: 28px;
+}
+ul{
+  display: flex;
+    justify-content: space-evenly;
 }

@@ -1,7 +1,14 @@
 let cards = document.querySelectorAll(".list-group-item");
 let cardsArray = Array.from(cards);
+var trash = document.getElementsByClassName("fa-trash");
+
 cardsArray.forEach((card) => {
   // card.addEventListener("click", showCard(card));
+  // if (card.classList.contains("uploadedImg")) {
+  //   console.log("true");
+  //   // card.classList.add("updatedCard");
+  //   // card.target.closest(".list-group-item").classList.add("clicked");
+  // }
   card.addEventListener("click", function showCard(card) {
     console.log("ayeee", card);
     card.target.closest(".list-group-item").classList.add("clicked");
@@ -26,9 +33,9 @@ cardsArray.forEach((card) => {
         let uploadedImg = document.getElementById("uploadedImg");
         let newLetterContainer = jsonData.letterContainer[0];
 
-        if (newLetterContainer.image) {
-          // add logic here
-        }
+        // if (newLetterContainer.image) {
+        //   // add logic here
+        // }
         // cardsArray.forEach((card) => {
         //   if (card.classList) {
         //   // card.classList.add("updatedCard");
@@ -43,6 +50,7 @@ cardsArray.forEach((card) => {
         // deleteImgLetterInput.value = newLetterContainer._Id;
 
         let newArrLetters = jsonData.arrLetters;
+        let deleteBtnDiv = document.getElementById("deleteBtnDiv");
         // for (let i = 0; i < newArrLetters.length; i++) {
         if (!newLetterContainer) {
           imgSize.src = `letters/${cardId}.png`;
@@ -50,6 +58,8 @@ cardsArray.forEach((card) => {
           console.log("undefined for real");
           let imgUploadFormInput = document.getElementById("imgUploadForm");
           imgUploadFormInput.hidden = false;
+          // deleteBtnDiv.hidden = true;
+          console.log(deleteBtnDiv.hidden);
 
           // DELETE        DELETE  DELETE        DELETE        DELETE  DELETE         DELETE        DELETE  DELETE
           // let deleteBtnDiv = document.getElementById("deleteBtnDiv");
@@ -68,9 +78,13 @@ cardsArray.forEach((card) => {
           console.log(newLetterContainer.image);
           imgSize.src = `letters/${cardId}.png`;
           uploadedImg.src = `${newLetterContainer.image}`;
+          uploadedImg.classList.add(`${newLetterContainer._id}`);
+          console.log(uploadedImg);
           let imgUploadFormInput = document.getElementById("imgUploadForm");
           imgUploadFormInput.hidden = true;
           console.log("newLetterContainer.length", newLetterContainer.image);
+          // deleteBtnDiv.hidden = false;
+          console.log(deleteBtnDiv.hidden);
 
           let updatedCard = cardsArray.forEach((card) => {
             if (newLetterContainer.image) {
@@ -79,8 +93,10 @@ cardsArray.forEach((card) => {
             }
           });
           // DELETE        DELETE  DELETE        DELETE        DELETE  DELETE         DELETE        DELETE  DELETE
+          let deleteImgLetterInput = document.getElementById("deleteImgLetter");
+          deleteImgLetterInput.value = newLetterContainer._Id;
           // let deleteBtnDiv = document.getElementById("deleteBtnDiv");
-          // deleteBtnDiv.hidden = false;
+          deleteBtnDiv.hidden = false;
           // if (newLetterContainer[i].letter === cardId) {
           //   return;
           // }
@@ -99,15 +115,27 @@ cardsArray.forEach((card) => {
       });
   });
 });
+let uploadedImg = document.getElementsByClassName("uploadedImg");
+let uploadedImgs = Array.from(uploadedImg);
 
-// function checkCards(){
-//   cardsArray.forEach((card) => {
-//     if (card.classList) {
-//       // card.classList.add("updatedCard");
-//       // card.target.closest(".list-group-item").classList.add("clicked");
-//     }
-//   });
-// }
+function checkCards() {
+  // if (uploadedImg.src) {
+  //   console.log("trent");
+  // }
+  uploadedImgs.forEach((img) => {
+    if (img.src !== "undefined") {
+      console.log("true", img);
+      img.parentElement.parentElement.parentElement.style =
+        "background-color: rgb(175 255 150 / 45%)";
+      // card.classList.add("updatedCard");
+      // card.target.closest(".list-group-item").classList.add("clicked");
+    } else {
+      // img.parentElement.parentElement.parentElement.style =
+      //   "background-color: rgb(150 157 255 / 45%)";
+    }
+  });
+}
+checkCards();
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -142,3 +170,22 @@ document.addEventListener("click", function (event) {
     dropdownMenu.classList.remove("show");
   }
 });
+
+// Array.from(trash).forEach(function (element) {
+//   element.addEventListener("click", function () {
+//     const name = this.parentNode.parentNode.childNodes[1].innerText;
+//     // const msg = this.parentNode.parentNode.childNodes[3].innerText;
+//     fetch("messages", {
+//       method: "delete",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         name: name,
+//         msg: msg,
+//       }),
+//     }).then(function (response) {
+//       window.location.reload();
+//     });
+//   });
+// });

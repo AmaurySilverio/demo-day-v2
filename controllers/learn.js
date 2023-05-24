@@ -112,7 +112,9 @@ module.exports = {
   deletePost: async (req, res) => {
     try {
       // Delete post from db
-      await Learn.remove({ _id: req.body.id });
+      console.log("deleteId", _id);
+      await Learn.remove({ _id: req.params.id });
+      console.log("deleteId", _id);
       console.log("Deleted Post");
       res.redirect("/learn");
     } catch (err) {

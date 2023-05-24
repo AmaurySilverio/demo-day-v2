@@ -86,9 +86,38 @@ h1{
 }
 .footer-header h2{
   margin-right: 48px;
-  color: white;
+  color: black;
 }
 .footer-header a{
   width: 125px;
   background-color: rgb(88,204,2)
+}
+
+/* Footer */
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.layout-container{
+  margin: 0 auto;
+  /* max-width: 1140px; */
+  min-height: 70px;
+  text-align: center;
+  background-color: #f8f9fa!important;
+    opacity: 83%;
+}
+.footer-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-header a{
+  width: 125px;
+  background-color: rgb(88,204,2)
+}
+.footer-links{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
 }

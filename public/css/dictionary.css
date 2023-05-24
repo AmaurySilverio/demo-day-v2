@@ -1,7 +1,13 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
+  background: url(../imgs/learnBackground.png) no-repeat; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+
 #page-container {
   position: relative;
   min-height: 100vh;
@@ -54,16 +60,21 @@ h1 {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-gap: 10px;
   margin-bottom: 20px;
   padding-bottom: 70px;
+  width: 85%;
+    margin: 0 auto 20px auto;
+    justify-items: center; /* Center the search results horizontally */
+    
 }
 
 .grid-item {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -73,11 +84,26 @@ h1 {
   object-fit: contain;
 }
 .container{
-  background-image: url("/imgs/header-image.jpg");
+  /* background-image: url("/imgs/header-image.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   /* width: 100% !important; */
 }
 .bg-light{
-  opacity: 83%;
+  /* opacity: 83%; */
+}
+button{
+  border-radius: 16px;
+  background-color: rgb(150 157 255 / 45%);
+    height: 35px;
+    width: 113px;
+    margin-left: 7px;
+    opacity: 93%;
+}
+#searchInput{
+  border-radius: 9px;
+    padding-left: 7px;
+}
+#profile-btn{
+  cursor: pointer;
 }

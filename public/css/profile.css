@@ -1,3 +1,10 @@
+body{
+  background: url(../imgs/learnBackground.png) no-repeat; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 /* Header */
 /* Profile button */
 #profile-btn{
@@ -54,7 +61,7 @@ footer{
   opacity: 83%;
 }
 /* Automatic scrolling styling */
-/* .container {
+.container {
   width: 100%;
   overflow: hidden;
 }
@@ -81,5 +88,20 @@ footer{
   100% {
     transform: translateX(calc(-100% - 10px));
   }
-} */
+}
 
+.list-unstyled{
+  margin-bottom: 75px;
+  background: white;
+  opacity: 90%;
+}
+.introBlurb{
+  border: 1px solid black;
+    background: white;
+    opacity: 90%;
+    padding: 20px;
+    border-radius: 20px;
+}
+.mt-5{
+  margin: 0 200px;
+}
